@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class RedisService {
-
     private int rateLimitPerMinute;
 
     public RedisService(int rpm) {
@@ -24,8 +23,8 @@ public class RedisService {
         System.out.println("New User !!! - " + userName);
         return true;
     }
-    public synchronized boolean requestHit(String userName, Instant ts) {
 
+    public synchronized boolean requestHit(String userName, Instant ts) {
         if (!userIdToRequest.containsKey(userName)) {
             return addNewUser(userName, ts);
         } else {
@@ -34,20 +33,19 @@ public class RedisService {
                 tmp.add(new Request(ts, 1));
                 userIdToRequest.put(userName, tmp);
                 return true;
-            } 
-            else {
+            } else {
                 boolean actionTaken = false;
                 for (int i = 0; i < userIdToRequest.get(userName).size(); i++) {
                     Duration duration = Duration.between(userIdToRequest.get(userName).get(i).getTs(), ts);
                     if (duration.getSeconds() >= 60) {
                         userIdToRequest.get(userName).remove(i);
                         actionTaken = true;
-                    } 
-                    else {
+                    } else {
                         break;
                     }
                 }
-                // case 1 - if some entries are older than 1 minute evict those and insert new entry
+                // case 1 - if some entries are older than 1 minute evict those and insert new
+                // entry
                 // and return true
                 if (actionTaken) {
                     LinkedList<Request> tmp = userIdToRequest.get(userName);
@@ -61,6 +59,7 @@ public class RedisService {
             }
         }
     }
+
     private int getTotalElapsedRequest(String userName) {
         return userIdToRequest.get(userName).stream().mapToInt(Request::getCount).sum();
     }
@@ -69,13 +68,16 @@ public class RedisService {
 class Request {
     private Instant ts;
     private int count;
+
     public Request(Instant ts, int count) {
         this.ts = ts;
         this.count = count;
     }
+
     public Instant getTs() {
         return ts;
     }
+
     public int getCount() {
         return count;
     }

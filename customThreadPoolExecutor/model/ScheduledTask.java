@@ -21,11 +21,9 @@ public class ScheduledTask implements Comparable<ScheduledTask> {
         this.scheduledTaskType = scheduledTaskType;
         this.schedulePeriodInMillis = schedulePeriodInMillis;
     }
-
     public Runnable getTask() {
         return task;
     }
-
     public Long getScheduledExecutionTime() {
         return scheduledExecutionTime;
     }
@@ -33,21 +31,17 @@ public class ScheduledTask implements Comparable<ScheduledTask> {
     public ScheduledTaskType getScheduledTaskType() {
         return scheduledTaskType;
     }
-
     public Long getSchedulePeriodInMillis() {
         return schedulePeriodInMillis;
     }
-
     public void setScheduledExecutionTime(Long scheduledExecutionTime) {
         this.scheduledExecutionTime = scheduledExecutionTime;
     }
-
 
     @Override
     public int compareTo(ScheduledTask o) {
         return (int) (scheduledExecutionTime - o.scheduledExecutionTime);
     }
-
     @Override
     public String toString() {
         return "ScheduledTask{" +

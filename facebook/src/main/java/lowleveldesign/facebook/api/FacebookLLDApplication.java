@@ -1,4 +1,4 @@
-package lowleveldesign.facebook.api;
+package facebook.src.main.java.lowleveldesign.facebook.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

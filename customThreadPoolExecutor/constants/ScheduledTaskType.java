@@ -1,8 +1,6 @@
 package customThreadPoolExecutor.constants;
-/**
- * @author priyamvora
- * @created 29/05/2021
- */
+
+/* custom thread pool executor */
 public enum ScheduledTaskType {
     ONE_SHOT,
     FIXED_DELAY,

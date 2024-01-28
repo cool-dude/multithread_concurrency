@@ -1,4 +1,4 @@
-package lowleveldesign.facebook.api.core.chainofresponsibilities.handlers;
+package facebook.src.main.java.lowleveldesign.facebook.api.core.chainofresponsibilities.handlers;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

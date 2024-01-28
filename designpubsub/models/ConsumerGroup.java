@@ -2,9 +2,7 @@
  * Alipay.com Inc. Copyright (c) 2004-2021 All Rights Reserved.
  */
 package designpubsub.models;
-
 import lombok.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
 

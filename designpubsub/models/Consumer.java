@@ -2,13 +2,10 @@
  * Alipay.com Inc. Copyright (c) 2004-2021 All Rights Reserved.
  */
 package designpubsub.models;
-
 import designpubsub.publicInterface.MessageBroker;
 import lombok.Getter;
-
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * @author paras.chawla
  * @version $Id: Consumer.java, v 0.1 2021-03-03 1:53 PM paras.chawla Exp $$

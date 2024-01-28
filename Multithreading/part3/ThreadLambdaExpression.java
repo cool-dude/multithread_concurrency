@@ -5,8 +5,8 @@ package part3;
 // A functional interface is an interface with a single abstract method.
 public class ThreadLambdaExpression {
 	public static void main(String args[]) throws Exception {
-		
-		Runnable obj1 = () -> {            // lambda expression, removes the call to run() function as Runnable is an functional interface
+		Runnable obj1 = () -> {            
+				// lambda expression, removes the call to run() function as Runnable is an functional interface
 				for(int i=0;i<5;i++) {
 					System.out.println("Hi");
 					try {
@@ -15,7 +15,8 @@ public class ThreadLambdaExpression {
 				}
 			} ;
 		
-		Runnable obj2 = () -> {            // lambda expression, removes the call to run() function as Runnable is an functional interface  
+		Runnable obj2 = () -> {            
+				// lambda expression, removes the call to run() function as Runnable is an functional interface  
 				for(int i=0;i<5;i++) {
 					System.out.println("Hello");
 					try {

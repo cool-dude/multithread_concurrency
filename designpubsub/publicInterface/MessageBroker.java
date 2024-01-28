@@ -2,6 +2,7 @@
  * Alipay.com Inc. Copyright (c) 2004-2021 All Rights Reserved.
  */
 package designpubsub.publicInterface;
+
 import designpubsub.models.Consumer;
 import designpubsub.models.ConsumerGroup;
 import designpubsub.models.Message;
@@ -12,10 +13,7 @@ import lombok.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author paras.chawla
- * @version $Id: MessageBroker.java, v 0.1 2021-03-02 10:01 AM paras.chawla Exp $$
- */
+//** kafka pub-sub */
 public class MessageBroker {
 
     private final List<Topic> topicsList;
@@ -47,33 +45,39 @@ public class MessageBroker {
         partition.addMessage(message);
         System.out.println("Message published successfully");
 
-        // 2.2 Find all consumers in different consumer-Group listening to this particular partition
-        // Only 1 consumer from 1 consumerGroup can participate in listening from this particular partion
+        // 2.2 Find all consumers in different consumer-Group listening to this
+        // particular partition
+        // Only 1 consumer from 1 consumerGroup can participate in listening from this
+        // particular partion
 
-        /* Approach 1- Using stand alone Threads
-        for (Consumer consumer : partition.getConsumerList()) {
-            // creating a seperate task for seperate Consumer
-            ConsumerWorker consumerWorker = new ConsumerWorker(topic, partition, consumer);
-            // executing task
-            new Thread(consumerWorker).start();
-        }
-
-
-        // Approach 2 - get count of available cores
-        int coreCounts = Runtime.getRuntime().availableProcessors();
-        ExecutorService service = Executors.newFixedThreadPool(coreCounts);
-        for (Consumer consumer : partition.getConsumerList()) {// partition -> List<CG> -> List<C> C1,C2,C3
-            // creating a seperate task for seperate Consumer
-            ConsumerWorker consumerWorker = new ConsumerWorker(topic, partition, consumer);
-            service.execute(consumerWorker);
-        }
-        */
+        /*
+         * Approach 1- Using stand alone Threads
+         * for (Consumer consumer : partition.getConsumerList()) {
+         * // creating a seperate task for seperate Consumer
+         * ConsumerWorker consumerWorker = new ConsumerWorker(topic, partition,
+         * consumer);
+         * // executing task
+         * new Thread(consumerWorker).start();
+         * }
+         * 
+         * 
+         * // Approach 2 - get count of available cores
+         * int coreCounts = Runtime.getRuntime().availableProcessors();
+         * ExecutorService service = Executors.newFixedThreadPool(coreCounts);
+         * for (Consumer consumer : partition.getConsumerList()) {// partition ->
+         * List<CG> -> List<C> C1,C2,C3
+         * // creating a seperate task for seperate Consumer
+         * ConsumerWorker consumerWorker = new ConsumerWorker(topic, partition,
+         * consumer);
+         * service.execute(consumerWorker);
+         * }
+         */
     }
     /*
      * ConsumeRunner -> 3 threads for 3 consumers calling consume api
      * partition.message.size ==0 wait
      *
-     * */
+     */
 
     public Message consume(@NonNull String topicName, String partitionName, Consumer consumer) {
         Topic topic = null;

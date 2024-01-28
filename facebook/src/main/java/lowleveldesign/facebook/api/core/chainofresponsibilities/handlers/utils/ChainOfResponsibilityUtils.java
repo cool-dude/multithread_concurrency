@@ -1,4 +1,4 @@
-package lowleveldesign.facebook.api.core.chainofresponsibilities.handlers.utils;
+package facebook.src.main.java.lowleveldesign.facebook.api.core.chainofresponsibilities.handlers.utils;
 import lowleveldesign.facebook.api.core.chainofresponsibilities.handlers.Handler;
 import lowleveldesign.facebook.api.core.chainofresponsibilities.handlers.models.handlerdatas.strategyhandlerdata.postpoints.PostPointsStrategyHandlerData;
 import lowleveldesign.facebook.api.core.chainofresponsibilities.handlers.startegyhandlers.implementations.PostPointsStrategyHandler;
